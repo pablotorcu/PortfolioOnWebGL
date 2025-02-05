@@ -1,4 +1,4 @@
 # PortfolioOnWebGL
 
 
-Project for show my reel in a 3D environment
+Project to show my reel in a 3D environment
