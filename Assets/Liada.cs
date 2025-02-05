@@ -13,6 +13,6 @@ public class Liada : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        print("La lio q flipas x culpa de Aiyuan");   
     }
 }
