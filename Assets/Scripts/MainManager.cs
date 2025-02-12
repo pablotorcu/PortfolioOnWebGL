@@ -10,9 +10,18 @@ public class MainManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _startText;
     [SerializeField] private GameObject _startCanvas, _sandParticles, _bigSand;
     [SerializeField] private AnimationCurve _aCurve;
+    [SerializeField] private ParticleSystem[] _sandParts;
 
     void Start()
     {
+        if (!WebGLInput.captureAllKeyboardInput)
+        {
+            foreach(ParticleSystem p in _sandParts)
+            {
+                var shape = p.shape;
+                shape.radius = p.shape.radius / 2f;
+            }
+        }
         _startText.text = "Start";
         _cameraTr.GetComponent<CameraOrbit>().enabled = false;
         _cameraTr.position = _startCameraTr.position;
