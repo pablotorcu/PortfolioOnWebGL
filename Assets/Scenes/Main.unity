@@ -97,8 +97,10 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: e49fd577a6c2ff944a89142b60229781,
+    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: fcd2805ba7070d6488a09a78c220fcc3,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -134,6 +136,10 @@ PrefabInstance:
     - target: {fileID: 1000010390738104, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
       propertyPath: m_Name
       value: Desert_Obelisk_Stand (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010390738104, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012333492518, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -384,6 +390,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TallBuilding03
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 488568c0d2ad9704ea467b627e34dc99,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -475,6 +486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert_Temple_Entrance
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011859241944, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011147253788, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.97
@@ -536,6 +551,10 @@ PrefabInstance:
     - target: {fileID: 1000010390738104, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
       propertyPath: m_Name
       value: Desert_Obelisk_Stand (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010390738104, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012333492518, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5663,6 +5682,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Cube (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011208106806, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.15
@@ -5949,6 +5972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 0a76becb07e893e45b45999a82f0f2c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6353,6 +6381,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 02c3bef992d0a874e833bc6879db334e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6415,6 +6448,10 @@ PrefabInstance:
     - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_Name
       value: Block_Cube (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4000011208106806, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6491,6 +6528,10 @@ PrefabInstance:
     - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_Name
       value: Block_Cube (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4000011208106806, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6670,6 +6711,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TinyBuilding01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b51d250a9d9a9254b821c4420fcce9c2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11855,6 +11901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Cube (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011208106806, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.15
@@ -12087,6 +12137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert_Obelisk_Stand
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010390738104, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012333492518, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.87
@@ -12154,7 +12208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1050368397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12229,7 +12283,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -12266,6 +12320,10 @@ PrefabInstance:
     - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_Name
       value: Block_Cube (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4000011208106806, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12336,6 +12394,10 @@ PrefabInstance:
     - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_Name
       value: Block_Cube (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4000011208106806, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12520,6 +12582,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TinyBuilding01
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b51d250a9d9a9254b821c4420fcce9c2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12703,6 +12770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert_Obelisk_Stand (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010390738104, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012333492518, guid: 09c2ce84a75b3324fb5c689e5ac6ce7e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.87
@@ -12764,6 +12835,10 @@ PrefabInstance:
     - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_Name
       value: Block_Cube (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4000011208106806, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18252,6 +18327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Cube (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011208106806, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06
@@ -18388,6 +18467,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TallBuilding02
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e8092e507e261f04980139a5fa230625,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18476,6 +18560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TallBuilding02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e8092e507e261f04980139a5fa230625,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18638,6 +18727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Cube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011285132168, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011208106806, guid: b324ebca6c0fde34a993f348c9a1c464, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.05
@@ -18710,7 +18803,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1702235522
 Transform:
@@ -18794,6 +18887,10 @@ PrefabInstance:
     - target: {fileID: 1000013553030096, guid: d6238962ede8add4b877e688a0620c24, type: 3}
       propertyPath: m_Name
       value: Desert_Column_TopRuined (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013553030096, guid: d6238962ede8add4b877e688a0620c24, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012789593826, guid: d6238962ede8add4b877e688a0620c24, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29186,6 +29283,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 11.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 24a12b96bc060b74e92ea40bb5b4dc54,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29253,6 +29355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TallBuilding03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 488568c0d2ad9704ea467b627e34dc99,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29357,6 +29464,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 12e99380e5d49224a8782eb2b578fbef,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29428,6 +29540,10 @@ PrefabInstance:
     - target: {fileID: 1000013553030096, guid: d6238962ede8add4b877e688a0620c24, type: 3}
       propertyPath: m_Name
       value: Desert_Column_TopRuined
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013553030096, guid: d6238962ede8add4b877e688a0620c24, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012789593826, guid: d6238962ede8add4b877e688a0620c24, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29556,6 +29672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: a788b26994a2aad478a60a32c181a2f8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29875,6 +29996,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 12e99380e5d49224a8782eb2b578fbef,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29963,7 +30089,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!95 &3660661701643763332
 Animator:
@@ -30017,7 +30143,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!23 &8811483097813636202
 MeshRenderer:
