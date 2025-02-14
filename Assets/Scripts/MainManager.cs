@@ -7,21 +7,23 @@ public class MainManager : MonoBehaviour
 {
     [SerializeField] private Transform _startCameraTr, _cameraTr;
     [SerializeField] private Transform _defOrientation, _puzzleOrientation;
-    [SerializeField] private TextMeshProUGUI _startText;
+    [SerializeField] private TextMeshProUGUI _startText, _currentModeText;
     [SerializeField] private GameObject _startCanvas, _sandParticles, _bigSand;
     [SerializeField] private AnimationCurve _aCurve;
     [SerializeField] private ParticleSystem[] _sandParts;
+    [SerializeField] private Animator _touchStoneAnim;
+    [SerializeField] private PadData[] _padPostions;
 
     void Start()
     {
-        if (!WebGLInput.captureAllKeyboardInput)
-        {
-            foreach(ParticleSystem p in _sandParts)
-            {
-                var shape = p.shape;
-                shape.radius = p.shape.radius / 2f;
-            }
-        }
+        //if (!WebGLInput.captureAllKeyboardInput)
+        //{
+        //    foreach(ParticleSystem p in _sandParts)
+        //    {
+        //        var shape = p.shape;
+        //        shape.radius = p.shape.radius / 2f;
+        //    }
+        //}
         _startText.text = "Start";
         _cameraTr.GetComponent<CameraOrbit>().enabled = false;
         _cameraTr.position = _startCameraTr.position;
@@ -81,4 +83,45 @@ public class MainManager : MonoBehaviour
         _cameraTr.rotation = targetOrientation.rotation;
         _cameraTr.position = targetOrientation.position;
     }
+
+    public void CheckPad(bool[] padConfig)
+    {
+        _currentModeText.text = "";
+        bool same = false;
+        foreach (PadData p in _padPostions)
+        {
+            if (CheckIfEqual(p.padConfig, padConfig)) 
+            {
+                _currentModeText.text = p.padName;
+                p.targetCity.SetActive(true);
+                same = true;
+            }
+        }
+        _touchStoneAnim.SetBool("On", same);
+    }
+
+    public void SetStone(bool state)
+    {
+        _touchStoneAnim.SetBool("On", state);
+    }
+
+    public bool CheckIfEqual(bool[] a1, bool[] a2)
+    {
+        for (int i = 0; i < a1.Length; i++)
+        {
+            if (a1[i] != a2[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+[System.Serializable]
+public class PadData
+{
+    public string padName;
+    public bool[] padConfig;
+    public GameObject targetCity;
 }

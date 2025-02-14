@@ -7,12 +7,7 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private Material _selectedMat, _defMat;
     [SerializeField] private bool[] _currentPuzzle;
     [SerializeField] private PuzzlePieceInstance[] _pieces;
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private MainManager _mainManager;
 
     public void OnTouchPiece(int pieceIndex)
     {
@@ -25,5 +20,6 @@ public class PuzzleManager : MonoBehaviour
         {
             _pieces[pieceIndex].SetMaterial(_defMat);
         }
+        _mainManager.CheckPad(_currentPuzzle);
     }
 }
