@@ -7,7 +7,7 @@ public class MainManager : MonoBehaviour
 {
     [SerializeField] private Transform _cameraTr;
     [SerializeField] private Transform[] _orientations;
-    [SerializeField] private TextMeshProUGUI _startText, _currentModeText, _clickText;
+    [SerializeField] private TextMeshProUGUI _startText, _currentModeText, _clickText, _instructionText;
     [SerializeField] private GameObject _startCanvas, _sandParticles, _bigSand;
     [SerializeField] private AnimationCurve _aCurve;
     [SerializeField] private ParticleSystem[] _sandParts;
@@ -19,14 +19,18 @@ public class MainManager : MonoBehaviour
 
     void Start()
     {
-        //if (!WebGLInput.captureAllKeyboardInput)
-        //{
-        //    foreach(ParticleSystem p in _sandParts)
-        //    {
-        //        var shape = p.shape;
-        //        shape.radius = p.shape.radius / 2f;
-        //    }
-        //}
+        float aspectRatio = (float)Screen.width / Screen.height;
+        if (aspectRatio < 1)
+        {
+            foreach (ParticleSystem part in _sandParts) 
+            {
+                Destroy(part);
+            }
+            _startText.fontSize *= 2;
+            _instructionText.fontSize *= 3;
+            _currentModeText.fontSize *= 2;
+            _instructionText.rectTransform.localPosition = Vector3.up * 850;
+        }
         _currentModeText.text = "";
         _clickText.text = "";
         _startText.text = "Start";
@@ -58,12 +62,12 @@ public class MainManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             _bigSand.SetActive(true);
             yield return StartCoroutine(CrChangeText(_startText, 1f, -1f));
-            //_startText.gameObject.SetActive(false);
-
             yield return StartCoroutine(CrOrientate(1f, _orientations[2]));
             _puzzleAnim.SetBool("On", true);
             _ruinsAnim.SetBool("On", true);
             _puzzleAvailable = true;
+            yield return new WaitForSeconds(1.5f);
+            _startText.gameObject.SetActive(false);
         }
     }
 
