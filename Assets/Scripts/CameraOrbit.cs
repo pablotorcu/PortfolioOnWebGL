@@ -2,71 +2,59 @@ using UnityEngine;
 
 public class CameraOrbit : MonoBehaviour
 {
-    public Transform target; // Punto objetivo al que se acerca la cámara
-    public float zoomSpeed = 5f; // Velocidad de zoom
-    public float minZoom = 5f; // Zoom mínimo
-    public float maxZoom = 20f; // Zoom máximo
-    public float positionSmoothTime = 0.5f; // Tiempo de suavizado para la posición
+    public float rotationSpeed = 5f;  // Velocidad de rotación de la cámara
 
-    private Camera cam;
-    private Vector3 velocity = Vector3.zero;
-
-    void Start()
-    {
-        cam = Camera.main;
-    }
+    private Vector3 lastPosition;
+    private bool isDragging = false;
 
     void Update()
     {
-        HandleMouseZoom();
-        HandleTouchZoom();
-        SmoothAdjustPosition();
-    }
-
-    void HandleMouseZoom()
-    {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll != 0f)
+        // Detectar la entrada de la PC (ratón)
+        if (Input.GetMouseButtonDown(0))
         {
-            ZoomCamera(scroll * zoomSpeed);
+            lastPosition = Input.mousePosition;
+            isDragging = true;
         }
-    }
-
-    void HandleTouchZoom()
-    {
-        if (Input.touchCount == 2)
+        else if (Input.GetMouseButtonUp(0))
         {
-            Touch touch0 = Input.GetTouch(0);
-            Touch touch1 = Input.GetTouch(1);
-
-            float prevDistance = (touch0.position - touch0.deltaPosition - (touch1.position - touch1.deltaPosition)).magnitude;
-            float currentDistance = (touch0.position - touch1.position).magnitude;
-            float deltaDistance = currentDistance - prevDistance;
-
-            ZoomCamera(deltaDistance * 0.01f * zoomSpeed);
+            isDragging = false;
         }
-    }
 
-    void ZoomCamera(float increment)
-    {
-        float targetSize = cam.orthographic ? cam.orthographicSize - increment : Vector3.Distance(transform.position, target.position) - increment;
-        targetSize = Mathf.Clamp(targetSize, minZoom, maxZoom);
-
-        if (cam.orthographic)
+        // Detectar la entrada táctil para dispositivos móviles
+        if (Input.touchCount > 0)
         {
-            cam.orthographicSize = targetSize;
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                lastPosition = Input.GetTouch(0).position;
+                isDragging = true;
+            }
+            else if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                isDragging = false;
+            }
         }
-        else
-        {
-            Vector3 targetPosition = target.position - (transform.forward * targetSize);
-            transform.position = targetPosition;
-        }
-    }
 
-    void SmoothAdjustPosition()
-    {
-        Vector3 targetPosition = target.position - transform.forward * Mathf.Clamp(Vector3.Distance(transform.position, target.position), minZoom, maxZoom);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, positionSmoothTime);
+        // Si está arrastrando, rotar la cámara
+        if (isDragging)
+        {
+            Vector3 delta = Vector3.zero;
+
+            if (Input.touchCount > 0) // Entrada táctil
+            {
+                delta = (Vector3)Input.GetTouch(0).position - lastPosition;
+            }
+            else if (Input.GetMouseButton(0)) // Entrada de ratón
+            {
+                delta = Input.mousePosition - lastPosition;
+            }
+
+            // Aplicar la rotación solo en el eje Y
+            float rotationAmount = delta.x * rotationSpeed * Time.deltaTime;
+
+            transform.Rotate(0, -rotationAmount, 0, Space.World);
+
+            lastPosition = Input.touchCount > 0 ? (Vector3)Input.GetTouch(0).position : Input.mousePosition;
+        }
     }
 }
 

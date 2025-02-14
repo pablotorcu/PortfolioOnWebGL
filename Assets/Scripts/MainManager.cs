@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
-    [SerializeField] private Transform _startCameraTr, _cameraTr;
-    [SerializeField] private Transform _defOrientation, _puzzleOrientation;
-    [SerializeField] private TextMeshProUGUI _startText, _currentModeText;
+    [SerializeField] private Transform _cameraTr;
+    [SerializeField] private Transform[] _orientations;
+    [SerializeField] private TextMeshProUGUI _startText, _currentModeText, _clickText;
+    [SerializeField] private TMP_Asset a;
     [SerializeField] private GameObject _startCanvas, _sandParticles, _bigSand;
     [SerializeField] private AnimationCurve _aCurve;
     [SerializeField] private ParticleSystem[] _sandParts;
-    [SerializeField] private Animator _touchStoneAnim;
+    [SerializeField] private Animator _touchStoneAnim, _puzzleAnim, _ruinsAnim;
     [SerializeField] private PadData[] _padPostions;
+    private PadData _currentPadData;
+    private bool _puzzleAvailable;
+    private Coroutine _changeTextCR, _clickTextCR;
 
     void Start()
     {
@@ -24,10 +28,14 @@ public class MainManager : MonoBehaviour
         //        shape.radius = p.shape.radius / 2f;
         //    }
         //}
+        _currentModeText.text = "";
+        _clickText.text = "";
         _startText.text = "Start";
+        _clickText.fontMaterial.SetFloat("_FaceDilate",-1);
+        _currentModeText.fontMaterial.SetFloat("_FaceDilate",-1);
         _cameraTr.GetComponent<CameraOrbit>().enabled = false;
-        _cameraTr.position = _startCameraTr.position;
-        _cameraTr.rotation = _startCameraTr.rotation;
+        _cameraTr.position = _orientations[0].position;
+        _cameraTr.rotation = _orientations[0].rotation;
     }
 
     public void OnStart()
@@ -36,37 +44,48 @@ public class MainManager : MonoBehaviour
         IEnumerator CrAdaptCamera()
         {
             _sandParticles.SetActive(true);
-            StartCoroutine(CrChangeText(1f, -1f));
-            yield return StartCoroutine(CrOrientate(2f,_defOrientation));
+            StartCoroutine(CrChangeText(_startText,1f, -1f));
+            yield return StartCoroutine(CrOrientate(2f, _orientations[1]));
             _sandParticles.SetActive(false);
 
             _startText.text = "Im\nPablo\nTorcuato";
-            yield return StartCoroutine(CrChangeText(1f,0.35f));
+            yield return StartCoroutine(CrChangeText(_startText, 1f,0.35f));
             yield return new WaitForSeconds(1f);
             _sandParticles.SetActive(true);
-            yield return StartCoroutine(CrChangeText(1f, -1f));
+            yield return StartCoroutine(CrChangeText(_startText, 1f, -1f));
 
             _startText.text = "use the\npuzzle to\nview my\nportfolio";
-            yield return StartCoroutine(CrChangeText(1f, 0.35f));
+            yield return StartCoroutine(CrChangeText(_startText, 1f, 0.35f));
             yield return new WaitForSeconds(1.5f);
             _bigSand.SetActive(true);
-            yield return StartCoroutine(CrChangeText(1f, -1f));
+            yield return StartCoroutine(CrChangeText(_startText, 1f, -1f));
             //_startText.gameObject.SetActive(false);
 
-            yield return StartCoroutine(CrOrientate(1f, _puzzleOrientation));
+            yield return StartCoroutine(CrOrientate(1f, _orientations[2]));
+            _puzzleAnim.SetBool("On", true);
+            _ruinsAnim.SetBool("On", true);
+            _puzzleAvailable = true;
         }
     }
 
 
-    public IEnumerator CrChangeText(float duration, float targetDil)
+    public IEnumerator CrChangeText(TextMeshProUGUI text, float duration, float targetDil)
     {
-        float startDil = _startText.fontMaterial.GetFloat("_FaceDilate");
+        float startDil = text.fontMaterial.GetFloat("_FaceDilate");
+        if (startDil == -1)
+        {
+            text.gameObject.SetActive(true);
+        }
         for (float i = 0; i < duration; i += Time.deltaTime)
         {
-            _startText.fontMaterial.SetFloat("_FaceDilate", Mathf.Lerp(startDil, targetDil, i / duration));
+            text.fontMaterial.SetFloat("_FaceDilate", Mathf.Lerp(startDil, targetDil, i / duration));
             yield return null;
         }
-        _startText.fontMaterial.SetFloat("_FaceDilate", targetDil);
+        text.fontMaterial.SetFloat("_FaceDilate", targetDil);
+        if (targetDil == -1 && text != _startText)
+        {
+            text.gameObject.SetActive(false);
+        }
     }
 
     public IEnumerator CrOrientate(float duration, Transform targetOrientation)
@@ -86,18 +105,70 @@ public class MainManager : MonoBehaviour
 
     public void CheckPad(bool[] padConfig)
     {
-        _currentModeText.text = "";
         bool same = false;
         foreach (PadData p in _padPostions)
         {
             if (CheckIfEqual(p.padConfig, padConfig)) 
             {
                 _currentModeText.text = p.padName;
-                p.targetCity.SetActive(true);
+                _currentPadData = p;
                 same = true;
             }
         }
+        if (_changeTextCR != null)
+        {
+            StopCoroutine(_changeTextCR);
+            StopCoroutine(_clickTextCR);
+        }
+        float targetDil = -1f;
+        if (same)
+        {
+            _clickText.text = "Click";
+            targetDil = 0.35f;
+        }
+        if (_currentModeText.fontMaterial.GetFloat("_FaceDilate") != targetDil)
+        {
+            _changeTextCR = StartCoroutine(CrChangeText(_currentModeText, 1, targetDil));
+            _clickTextCR = StartCoroutine(CrChangeText(_clickText, 1, targetDil));
+        }
         _touchStoneAnim.SetBool("On", same);
+    }
+
+    public void LaunchCity()
+    {
+        if (!_puzzleAvailable)
+        {
+            return;
+        }
+        StartCoroutine(CrLaunchCity()); 
+        IEnumerator CrLaunchCity()
+        {
+            HidePuzzle();
+            yield return new WaitForSeconds(0.5f);
+            yield return StartCoroutine(CrOrientate(1f, _orientations[3]));
+            _currentPadData.targetCity.SetActive(true);
+            yield return new WaitForSeconds(1.5f);
+            yield return StartCoroutine(CrOrientate(1f, _orientations[4]));
+            _cameraTr.GetComponent<CameraOrbit>().enabled = true;
+        }
+    }
+
+    void HidePuzzle()
+    {
+        _puzzleAvailable = false;
+        _touchStoneAnim.SetBool("On", false);
+        _changeTextCR = StartCoroutine(CrChangeText(_currentModeText, 0.5f, -1));
+        _clickTextCR = StartCoroutine(CrChangeText(_clickText, 0.5f, -1));
+        _puzzleAnim.SetBool("On", false);
+        _ruinsAnim.SetBool("On", false);
+    }
+
+
+    public void BackToPuzzle() 
+    {
+        _puzzleAvailable = true;
+        StartCoroutine(CrOrientate(1f, _orientations[1]));
+        _cameraTr.GetComponent<CameraOrbit>().enabled = false;
     }
 
     public void SetStone(bool state)
