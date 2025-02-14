@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class CameraOrbit : MonoBehaviour
 {
-    public float rotationSpeed = 5f;  // Velocidad de rotación de la cámara
-
+    [SerializeField] private Animator _dragInstruction;
+    public float rotationSpeed = 5f;
     private Vector3 lastPosition;
     private bool isDragging = false;
 
     void Update()
     {
-        // Detectar la entrada de la PC (ratón)
         if (Input.GetMouseButtonDown(0))
         {
             lastPosition = Input.mousePosition;
@@ -20,7 +19,6 @@ public class CameraOrbit : MonoBehaviour
             isDragging = false;
         }
 
-        // Detectar la entrada táctil para dispositivos móviles
         if (Input.touchCount > 0)
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
@@ -34,11 +32,10 @@ public class CameraOrbit : MonoBehaviour
             }
         }
 
-        // Si está arrastrando, rotar la cámara
         if (isDragging)
         {
             Vector3 delta = Vector3.zero;
-
+            _dragInstruction.SetBool("On", false);
             if (Input.touchCount > 0) // Entrada táctil
             {
                 delta = (Vector3)Input.GetTouch(0).position - lastPosition;
@@ -48,7 +45,6 @@ public class CameraOrbit : MonoBehaviour
                 delta = Input.mousePosition - lastPosition;
             }
 
-            // Aplicar la rotación solo en el eje Y
             float rotationAmount = delta.x * rotationSpeed * Time.deltaTime;
 
             transform.Rotate(0, -rotationAmount, 0, Space.World);

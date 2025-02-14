@@ -8,11 +8,10 @@ public class MainManager : MonoBehaviour
     [SerializeField] private Transform _cameraTr;
     [SerializeField] private Transform[] _orientations;
     [SerializeField] private TextMeshProUGUI _startText, _currentModeText, _clickText;
-    [SerializeField] private TMP_Asset a;
     [SerializeField] private GameObject _startCanvas, _sandParticles, _bigSand;
     [SerializeField] private AnimationCurve _aCurve;
     [SerializeField] private ParticleSystem[] _sandParts;
-    [SerializeField] private Animator _touchStoneAnim, _puzzleAnim, _ruinsAnim;
+    [SerializeField] private Animator _touchStoneAnim, _puzzleAnim, _ruinsAnim, _dragInstruction;
     [SerializeField] private PadData[] _padPostions;
     private PadData _currentPadData;
     private bool _puzzleAvailable;
@@ -150,6 +149,7 @@ public class MainManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             yield return StartCoroutine(CrOrientate(1f, _orientations[4]));
             _cameraTr.GetComponent<CameraOrbit>().enabled = true;
+            _dragInstruction.SetBool("On", true);
         }
     }
 
