@@ -8,10 +8,10 @@ public class MainManager : MonoBehaviour
     [SerializeField] private Transform _cameraTr;
     [SerializeField] private Transform[] _orientations;
     [SerializeField] private TextMeshProUGUI _startText, _currentModeText, _clickText, _instructionText;
-    [SerializeField] private GameObject _startCanvas, _sandParticles, _bigSand;
+    [SerializeField] private GameObject _startCanvas, _sandParticles, _bigSand, _mainCanvas;
     [SerializeField] private AnimationCurve _aCurve;
     [SerializeField] private ParticleSystem[] _sandParts;
-    [SerializeField] private Animator _touchStoneAnim, _puzzleAnim, _ruinsAnim, _dragInstruction;
+    [SerializeField] private Animator _touchStoneAnim, _puzzleAnim, _ruinsAnim, _dragInstruction, _mainCanvasAnim;
     [SerializeField] private PadData[] _padPostions;
     private PadData _currentPadData;
     private bool _puzzleAvailable;
@@ -24,7 +24,9 @@ public class MainManager : MonoBehaviour
         {
             foreach (ParticleSystem part in _sandParts) 
             {
-                Destroy(part);
+                var r = part.shape.radius;
+                r = r * aspectRatio;
+                _cameraTr.GetComponent<Camera>().fieldOfView = 85;
             }
             _startText.fontSize *= 2;
             _instructionText.fontSize *= 3;
@@ -68,6 +70,7 @@ public class MainManager : MonoBehaviour
             _puzzleAvailable = true;
             yield return new WaitForSeconds(1.5f);
             _startText.gameObject.SetActive(false);
+            _mainCanvas.SetActive(true);
         }
     }
 
@@ -137,6 +140,11 @@ public class MainManager : MonoBehaviour
         _touchStoneAnim.SetBool("On", same);
     }
 
+    public void HelpButton()
+    {
+        _mainCanvasAnim.SetBool("Show", !_mainCanvasAnim.GetBool("Show"));
+    }
+
     public void LaunchCity()
     {
         if (!_puzzleAvailable)
@@ -159,6 +167,7 @@ public class MainManager : MonoBehaviour
 
     void HidePuzzle()
     {
+        _mainCanvas.SetActive(false);
         _puzzleAvailable = false;
         _touchStoneAnim.SetBool("On", false);
         _changeTextCR = StartCoroutine(CrChangeText(_currentModeText, 0.5f, -1));
@@ -168,8 +177,9 @@ public class MainManager : MonoBehaviour
     }
 
 
-    public void BackToPuzzle() 
+    public void BackToPuzzle()
     {
+        _mainCanvas.SetActive(true);
         _puzzleAvailable = true;
         StartCoroutine(CrOrientate(1f, _orientations[1]));
         _cameraTr.GetComponent<CameraOrbit>().enabled = false;
