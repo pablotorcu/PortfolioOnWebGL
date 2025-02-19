@@ -532,7 +532,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.54
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
@@ -542,37 +542,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.46
+      value: -11.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.69420594
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0010059874
+      value: 0.000018537152
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.71977496
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0010856485
+      value: 0.000018537152
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 267.928
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
@@ -21265,7 +21265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1501240348
 Transform:
   m_ObjectHideFlags: 0
@@ -21275,7 +21275,7 @@ Transform:
   m_GameObject: {fileID: 1501240347}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.65, y: -19.08, z: 1.95}
+  m_LocalPosition: {x: -9.01, y: 0, z: 1.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21498,7 +21498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1588640485
 Animator:
   serializedVersion: 5
@@ -21864,7 +21864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1702235522
 Transform:
   m_ObjectHideFlags: 0
@@ -33058,7 +33058,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.559998
+      value: 12.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
@@ -33068,37 +33068,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.46
+      value: -11.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.69420594
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0010059874
+      value: 0.000018537152
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.71977496
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0010856485
+      value: 0.000018537152
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 267.928
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
@@ -33109,6 +33109,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TallBuilding03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 488568c0d2ad9704ea467b627e34dc99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 488568c0d2ad9704ea467b627e34dc99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 488568c0d2ad9704ea467b627e34dc99,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 488568c0d2ad9704ea467b627e34dc99,
         type: 3}
@@ -34041,7 +34056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &3660661701643763332
 Animator:
   serializedVersion: 5
