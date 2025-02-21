@@ -7,6 +7,11 @@ public class CameraOrbit : MonoBehaviour
     private Vector3 lastPosition;
     private bool isDragging = false;
 
+    private void OnEnable()
+    {
+        isDragging = false;
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

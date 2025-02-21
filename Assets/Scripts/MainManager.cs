@@ -8,17 +8,26 @@ public class MainManager : MonoBehaviour
     [SerializeField] private Transform _cameraTr;
     [SerializeField] private Transform[] _orientations;
     [SerializeField] private TextMeshProUGUI _startText, _currentModeText, _clickText, _instructionText;
-    [SerializeField] private GameObject _startCanvas, _sandParticles, _bigSand, _mainCanvas;
+    [SerializeField] private GameObject _startCanvas, _sandParticles, _bigSand, _mainCanvas, _backCanvas;
+    [SerializeField] private GameObject[] _initialGameobjectsOn, _initialGameobjectsOff;
     [SerializeField] private AnimationCurve _aCurve;
     [SerializeField] private ParticleSystem[] _sandParts;
     [SerializeField] private Animator _touchStoneAnim, _puzzleAnim, _ruinsAnim, _dragInstruction, _mainCanvasAnim;
     [SerializeField] private PadData[] _padPostions;
     private PadData _currentPadData;
-    private bool _puzzleAvailable;
+    private bool _puzzleAvailable, _hidingCity;
     private Coroutine _changeTextCR, _clickTextCR;
 
     void Start()
     {
+        foreach(GameObject g in _initialGameobjectsOn)
+        {
+            g.SetActive(true);
+        }
+        foreach (GameObject g in _initialGameobjectsOff)
+        {
+            g.SetActive(false);
+        }
         float aspectRatio = (float)Screen.width / Screen.height;
         if (aspectRatio < 1)
         {
@@ -158,10 +167,12 @@ public class MainManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             yield return StartCoroutine(CrOrientate(1f, _orientations[3]));
             _currentPadData.targetCity.SetActive(true);
+            _dragInstruction.SetBool("On", _currentPadData.padName != "Contact");
             yield return new WaitForSeconds(1.5f);
             yield return StartCoroutine(CrOrientate(1f, _orientations[4]));
             _cameraTr.GetComponent<CameraOrbit>().enabled = true;
-            _dragInstruction.SetBool("On", true);
+
+            _backCanvas.SetActive(true);
         }
     }
 
@@ -179,10 +190,36 @@ public class MainManager : MonoBehaviour
 
     public void BackToPuzzle()
     {
-        _mainCanvas.SetActive(true);
-        _puzzleAvailable = true;
-        StartCoroutine(CrOrientate(1f, _orientations[1]));
-        _cameraTr.GetComponent<CameraOrbit>().enabled = false;
+        if (_hidingCity)
+        {
+            return;
+        }
+
+        StartCoroutine(CrHideCity());
+        IEnumerator CrHideCity()
+        {
+            _backCanvas.SetActive(false);
+            _hidingCity = true;
+            _puzzleAvailable = true;
+            _puzzleAnim.SetBool("On", true);
+            _ruinsAnim.SetBool("On", true);
+            StartCoroutine(CrOrientate(1f, _orientations[2]));
+            _cameraTr.GetComponent<CameraOrbit>().enabled = false;
+
+            float dur = 2f;
+            Transform t = _currentPadData.targetCity.transform;
+            _currentPadData.targetCity.GetComponent<Animator>().enabled = false;
+            Vector3 startPos = t.position;
+            for (float i = 0; i < dur; i+= Time.deltaTime)
+            {
+                t.position = Vector3.Lerp(startPos, startPos-Vector3.up * 10f, i/dur);
+                yield return null;
+            }
+            _currentPadData.targetCity.SetActive(false);
+            _currentPadData.targetCity.GetComponent<Animator>().enabled = true;
+            _mainCanvas.SetActive(true);
+            _hidingCity = false;
+        }
     }
 
     public void SetStone(bool state)
