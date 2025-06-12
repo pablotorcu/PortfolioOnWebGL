@@ -15,12 +15,14 @@ public class MainManager : MonoBehaviour
     [SerializeField] private Animator _touchStoneAnim, _puzzleAnim, _ruinsAnim, _dragInstruction, _mainCanvasAnim;
     [SerializeField] private PadData[] _padPostions;
     private PadData _currentPadData;
+    private AudioSource _stoneSound;
     private bool _puzzleAvailable, _hidingCity;
     private Coroutine _changeTextCR, _clickTextCR;
 
     void Start()
     {
-        foreach(GameObject g in _initialGameobjectsOn)
+        _stoneSound = GetComponent<AudioSource>();
+        foreach (GameObject g in _initialGameobjectsOn)
         {
             g.SetActive(true);
         }
@@ -118,7 +120,7 @@ public class MainManager : MonoBehaviour
         _cameraTr.position = targetOrientation.position;
     }
 
-    public void CheckPad(bool[] padConfig)
+    public bool CheckPad(bool[] padConfig)
     {
         bool same = false;
         foreach (PadData p in _padPostions)
@@ -147,6 +149,7 @@ public class MainManager : MonoBehaviour
             _clickTextCR = StartCoroutine(CrChangeText(_clickText, 1, targetDil));
         }
         _touchStoneAnim.SetBool("On", same);
+        return same;
     }
 
     public void HelpButton()
@@ -178,6 +181,7 @@ public class MainManager : MonoBehaviour
 
     void HidePuzzle()
     {
+        _stoneSound.Play();
         _mainCanvas.SetActive(false);
         _puzzleAvailable = false;
         _touchStoneAnim.SetBool("On", false);
@@ -198,6 +202,8 @@ public class MainManager : MonoBehaviour
         StartCoroutine(CrHideCity());
         IEnumerator CrHideCity()
         {
+            _stoneSound.Play();
+            FindObjectOfType<PuzzleManager>().ResetPuzzle();
             _backCanvas.SetActive(false);
             _hidingCity = true;
             _puzzleAvailable = true;
